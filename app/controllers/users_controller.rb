@@ -22,6 +22,7 @@ class UsersController < ApplicationController
         @user.email= @user.email.downcase
         if @user.valid?
             @user.save
+            flash[:notice]="User Created. Sign in to continue."
             redirect_to @user
         else
             redirect_to signup_path
@@ -29,14 +30,17 @@ class UsersController < ApplicationController
     end
 
     def show
-     
       @user=User.find(params[:id])
+      if !@user.valid?
+        redirect_to login_path
+      else
       if session[:user_id] != @user.id
         flash[:notice]="Action not authorized"
         redirect_to login_path
       end
       @city= request.location.city
       @restaurants=Restaurant.all
+    end
     end
 
     def edit
