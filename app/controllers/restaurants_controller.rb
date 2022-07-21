@@ -81,7 +81,6 @@ class RestaurantsController < ApplicationController
          
         @searched_item=params[:search]
          @restaurants1= Restaurant.where("name LIKE ?", "%"+params[:search]+"%")
-         binding.pry
          @restaurants2= Restaurant.near(params[:search],50).order("distance")
          @restaurants3= Restaurant.where("resturant_type LIKE ?", "%"+params[:search]+"%")
 
@@ -91,7 +90,6 @@ class RestaurantsController < ApplicationController
       def search_filter
           @search=params[:search]
           @filter= params[:filter]
-          binding.pry
           if params[:filter] == 'Restaurant'
           @restaurants= Restaurant.where("name LIKE ?", "%"+@search+"%")
           elsif params[:filter] == 'Location'
