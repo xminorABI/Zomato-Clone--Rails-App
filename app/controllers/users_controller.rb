@@ -31,16 +31,13 @@ class UsersController < ApplicationController
 
     def show
       @user=User.find(params[:id])
-      if !@user.valid?
-        redirect_to login_path
-      else
+    
       if session[:user_id] != @user.id
         flash[:notice]="Action not authorized"
         redirect_to login_path
       end
       @city= request.location.city
       @restaurants=Restaurant.all
-    end
     end
 
     def edit
