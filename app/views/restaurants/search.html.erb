@@ -1,0 +1,26 @@
+<div class="user-greeting">
+  <h1> Restaurants</h1>
+ </div>
+
+<%=form_tag '/filter', method: :get, remote: true do |f|%>
+  <%= hidden_field_tag "search", params[:search]%>
+  <%= hidden_field_tag "filter", "Restaurant"%>
+  <%= submit_tag "Apply Filter", class:"btn btn-danger"%>
+<% end %>  
+<br/>
+
+<br/>
+<div class="rest-cont">
+<%if !@restaurants.nil?%>
+<% @restaurants.each do |r|%>
+<div class="card rest-con">
+<h3 class="card-header"><%= r.name%></h3>
+<div class="card-body">
+     <h5 class="card-title"><%= r.category%></h5>
+     <%= link_to "More Details", r, class:"btn btn-secondary"%>
+</div>
+</div>
+<br/>
+<% end %>
+<%end%>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  restaurant: one
+  head: 1
+  booked_on: 2022-05-15
+  booked_at: 2022-05-15 13:36:12
+
+two:
+  user: two
+  restaurant: two
+  head: 1
+  booked_on: 2022-05-15
+  booked_at: 2022-05-15 13:36:12
